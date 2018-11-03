@@ -63,7 +63,9 @@
     <Compile Include="Mono.Addins.Setup\AddinSystemConfiguration.cs" />
     <Compile Include="Mono.Addins.Setup\AddinSystemConfigurationReaderWriter.cs" />
     <Compile Include="Mono.Addins.Setup\AddinSystemConfigurationSerializer.cs" />
+    <Compile Include="Mono.Addins.Setup\FileSystem.cs" />
     <Compile Include="Mono.Addins.Setup\InstallException.cs" />
+    <Compile Include="Mono.Addins.Setup\LockCheck.cs" />
     <Compile Include="Mono.Addins.Setup\Package.cs" />
     <Compile Include="Mono.Addins.Setup\PackageCollection.cs" />
     <Compile Include="Mono.Addins.Setup\ReferenceRepositoryEntry.cs" />

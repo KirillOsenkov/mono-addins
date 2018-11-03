@@ -140,12 +140,12 @@ namespace Mono.Addins
 					Console.WriteLine (exception);
 			} else {
 				if (message != null && exception != null)
-					Console.WriteLine (message + " (" + exception.Message + ")");
+					Console.WriteLine (message + " (" + exception.ToString() + ")");
 				else {
 					if (message != null)
 						Console.WriteLine (message);
 					if (exception != null)
-						Console.WriteLine (exception.Message);
+						Console.WriteLine (exception.ToString());
 				}
 			}
 		}

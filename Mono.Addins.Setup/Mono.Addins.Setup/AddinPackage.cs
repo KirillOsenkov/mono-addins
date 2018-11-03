@@ -199,7 +199,7 @@ namespace Mono.Addins.Setup
 		internal override void EndInstall (IProgressMonitor monitor, AddinStore service)
 		{
 			if (url != null && packFile != null)
-				File.Delete (packFile);
+				FileSystem.File.Delete (packFile);
 			if (tempFolder != null)
 				Directory.Delete (tempFolder, true);
 		}
@@ -331,9 +331,9 @@ namespace Mono.Addins.Setup
 			monitor.Log.WriteLine ("Uninstalling " + info.Name + " v" + info.Version);
 			
 			foreach (string path in GetInstalledFiles (conf))
-				File.Delete (path);
+				FileSystem.File.Delete (path);
 			
-			File.Delete (iaddin.AddinFile);
+			FileSystem.File.Delete (iaddin.AddinFile);
 			
 			RecDeleteDir (monitor, basePath);
 			
@@ -381,9 +381,9 @@ namespace Mono.Addins.Setup
 			
 			string dfile = Path.Combine (destPath, Path.GetFileName (configFile));
 			if (File.Exists (dfile))
-				File.Delete (dfile);
+				FileSystem.File.Delete (dfile);
 				
-			File.Copy (configFile, dfile);
+			FileSystem.File.Copy (configFile, dfile);
 			
 			string basePath = Path.GetDirectoryName (configFile);
 			
@@ -398,9 +398,9 @@ namespace Mono.Addins.Setup
 					
 				dfile = Path.Combine (destPath, relPath);
 				if (File.Exists (dfile))
-					File.Delete (dfile);
+					FileSystem.File.Delete (dfile);
 
-				File.Copy (path, dfile);
+				FileSystem.File.Copy (path, dfile);
 			}
 		}
 		

@@ -251,7 +251,7 @@ namespace Mono.Addins.Setup
 		void ReportException (IProgressMonitor statusMonitor, Exception ex)
 		{
 			if (ex is InstallException)
-				statusMonitor.ReportError (ex.Message, null);
+				statusMonitor.ReportError (ex.ToString(), null);
 			else
 				statusMonitor.ReportError (null, ex);
 		}
@@ -562,7 +562,7 @@ namespace Mono.Addins.Setup
 	
 			foreach (string file in Directory.GetFiles (src)) {
 				if (Path.GetFileName (file) != "addin.info")
-					File.Copy (file, Path.Combine (destDir, Path.GetFileName (file)), true);
+					FileSystem.File.Copy (file, Path.Combine (destDir, Path.GetFileName (file)), true);
 			}
 	
 			foreach (string dir in Directory.GetDirectories (src))
@@ -577,7 +577,7 @@ namespace Mono.Addins.Setup
 				return ReadObject (file, type);
 			} finally {
 				if (file != null)
-					File.Delete (file);
+					FileSystem.File.Delete (file);
 			}
 		}
 		
@@ -620,7 +620,7 @@ namespace Mono.Addins.Setup
 			} catch {
 				s.Close ();
 				if (File.Exists (file))
-					File.Delete (file);
+					FileSystem.File.Delete (file);
 				throw;
 			}
 		}
@@ -630,8 +630,8 @@ namespace Mono.Addins.Setup
 			if (url.StartsWith ("file://", StringComparison.Ordinal)) {
 				string tmpfile = Path.GetTempFileName ();
 				string path = new Uri (url).LocalPath;
-				File.Delete (tmpfile);
-				File.Copy (path, tmpfile);
+				FileSystem.File.Delete (tmpfile);
+				FileSystem.File.Copy (path, tmpfile);
 				return tmpfile;
 			}
 
@@ -669,7 +669,7 @@ namespace Mono.Addins.Setup
 				if (s != null)
 					s.Close ();
 				if (file != null)
-					File.Delete (file);
+					FileSystem.File.Delete (file);
 				throw;
 			} finally {
 				monitor.EndTask ();
